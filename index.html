@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="Develop/css/style.css">
+</head>
+<body>
+    <div class="container" id="page-title">
+        <h1>Weather <i class="fas fa-cloud cloud-color"></i> Forecast</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" id="search">
+                <h4>Search for a City:</h4>
+                <input class="city-search" type="text" placeholder="Search..">
+            </div>
+            <div class="col-md-9">
+                <div class="center" id="city"></div>
+                <div class="center" id="description"></div>
+                <div class="center" id="temp"></div>
+                <div class="center" id="humid"></div>
+                <div class="center" id="wind"></div>
+                <div class="center" id="uv"></div>
+                <div class="row" id="forecast"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="Develop/js/script.js"></script>
+</body>
+</html>
