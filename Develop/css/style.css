@@ -1,0 +1,26 @@
+body {
+    background-color: snow;
+}
+
+#page-title {
+    text-align: center;
+    color: white;
+    background-color: deepskyblue;
+    width: 100%;
+    height: 50px;
+    
+}
+
+.cloud-color {
+    color: whitesmoke;
+}
+
+.center {
+ text-align: center;
+}
+
+#search {
+    padding-top: 1%;
+    /* border: thin solid lightslategray; */
+    background-color: whitesmoke;
+}
