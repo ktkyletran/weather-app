@@ -22,5 +22,24 @@ body {
 #search {
     padding-top: 1%;
     /* border: thin solid lightslategray; */
-    background-color: whitesmoke;
+    background-color: white;
+}
+
+.forecast-box {
+    background-color: deepskyblue;
+    color: white;
+    display: inline-block;
+    height: 200px;
+    width: 150px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 1.5%;
+    font-weight: 500;
+    padding-top: 10px;
+    
+}
+
+#uv {
+    background-color: snow;
+    text-align: center;
 }
