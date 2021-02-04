@@ -1,3 +1,4 @@
+// DOM vars
 var citySearchEl = document.querySelector(".city-search");
 var cityEl = document.querySelector("#city");
 var descriptionEl = document.querySelector("#description");
@@ -8,10 +9,16 @@ var uvEl = document.querySelector("#uv");
 var forecastEl = document.querySelector("#forecast");
 var iconEl = document.querySelector("#icon");
 var dateEl = document.querySelector("#date");
+var resultEl = document.querySelector(".result");
+var linebreakEl = document.querySelector(".linebreak");
 
+
+// Key & Temp vars
 var key = "03a43800a0b030ada65e542c5792a23b"
 var KELVIN = 273;
 
+
+// Weather vars
 var weather = {
     temperature: {
         value: "",
@@ -61,6 +68,7 @@ var forecast = {
 };
 
 
+// City search function
 function search() {
     var city = citySearchEl.value.trim();
 
@@ -74,13 +82,13 @@ function search() {
 };
 
 
+// Weather function
 function getWeather(city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key;
 
     fetch(apiUrl)
     .then(function(response){
         let data = response.json();
-        console.log(data)
         return data;
     })
     .then(function(data){
@@ -107,7 +115,6 @@ function getOneCall() {
     fetch(api)
     .then(function(response){
         let oneCallData = response.json();
-        console.log(oneCallData);
         return oneCallData;
     })
     .then(function(oneCallData){
@@ -137,6 +144,8 @@ function getOneCall() {
     })
 }
 
+
+// Display weather results
 function displayWeather() {
     var cityName = document.createElement("h1");
     var temperature = document.createElement("h5");
@@ -145,14 +154,15 @@ function displayWeather() {
     var description = document.createElement("h5");
     var icon = document.createElement("img");
     var date = document.createElement("h6");
+    var linebreak = document.createElement("hr");
 
     cityName.textContent = `${weather.city}`;
     description.textContent = `${weather.description}`;
     temperature.textContent =  `Temperature: ${weather.temperature.value}°F`;
     humidity.textContent = `Humidity: ${weather.humidity}%`;
     windspeed.textContent = `Windspeed: ${weather.windspeed} MPH`;
-    icon.setAttribute("src", `http://openweathermap.org/img/wn/${weather.iconId}@2x.png`);
     date.textContent = `${weather.date}`
+    icon.setAttribute("src", `http://openweathermap.org/img/wn/${weather.iconId}@2x.png`);
 
     descriptionEl.append(description);
     cityEl.append(cityName);
@@ -161,12 +171,29 @@ function displayWeather() {
     windEl.append(windspeed);
     iconEl.append(icon);
     dateEl.append(date);
+    linebreakEl.append(linebreak);
 };
 
 function displayUv() {
     var uvIndex = document.createElement("h5");
 
     uvIndex.textContent = `UV: ${weather.uv}`;
+
+    if (0 <= `${weather.uv}` < 2) {
+        uvEl.style.backgroundColor = "green";
+    }
+    else if (2 < `${weather.uv}` < 5) {
+        uvEl.style.backgroundColor = "yellow";
+    }
+    else if (5 < `${weather.uv}` < 7) {
+        uvEl.style.backgroundColor = "orange";
+    }
+    else if (7 < `${weather.uv}` <= 11) {
+        uvEl.style.backgroundColor = "red";
+    }
+    else {
+        uvIndex.textContent = "UV: N/A";
+    }
 
     uvEl.append(uvIndex);
 }
@@ -219,27 +246,27 @@ function displayForecast() {
     var date5 = document.createElement("p");
     var icon5 = document.createElement("img");
 
-    temp1.textContent = `Temp: ${forecast.day1.temperature}`;
+    temp1.textContent = `Temp: ${forecast.day1.temperature}°F`;
     humid1.textContent = `Humidity: ${forecast.day1.humidity}%`;
     date1.textContent = date1El;
     icon1.setAttribute("src", `http://openweathermap.org/img/wn/${forecast.day1.iconId}.png`);
 
-    temp2.textContent = `Temp: ${forecast.day2.temperature}`;
+    temp2.textContent = `Temp: ${forecast.day2.temperature}°F`;
     humid2.textContent = `Humidity: ${forecast.day2.humidity}%`;
     date2.textContent = date2El;
     icon2.setAttribute("src", `http://openweathermap.org/img/wn/${forecast.day2.iconId}.png`);
 
-    temp3.textContent = `Temp: ${forecast.day3.temperature}`;
+    temp3.textContent = `Temp: ${forecast.day3.temperature}°F`;
     humid3.textContent = `Humidity: ${forecast.day3.humidity}%`;
     date3.textContent = date3El;
     icon3.setAttribute("src", `http://openweathermap.org/img/wn/${forecast.day3.iconId}.png`);
 
-    temp4.textContent = `Temp: ${forecast.day4.temperature}`;
+    temp4.textContent = `Temp: ${forecast.day4.temperature}°F`;
     humid4.textContent = `Humidity: ${forecast.day4.humidity}%`;
     date4.textContent = date4El;
     icon4.setAttribute("src", `http://openweathermap.org/img/wn/${forecast.day4.iconId}.png`);
 
-    temp5.textContent = `Temp: ${forecast.day5.temperature}`;
+    temp5.textContent = `Temp: ${forecast.day5.temperature}°F`;
     humid5.textContent = `Humidity: ${forecast.day5.humidity}%`;
     date5.textContent = date5El;
     icon5.setAttribute("src", `http://openweathermap.org/img/wn/${forecast.day5.iconId}.png`);
@@ -252,14 +279,10 @@ function displayForecast() {
 
 }
 
-function clearSearch() {
-    var clearResults = document.querySelector(".results");
-    clearResults.innerHTML = "";
-}
 
+// Event listener for city search
 citySearchEl.addEventListener("keypress", function (e){
     if (e.key === "Enter") {
         search();
-        // clearSearch();
     }
 });
