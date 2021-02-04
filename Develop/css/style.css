@@ -43,3 +43,8 @@ body {
     background-color: snow;
     text-align: center;
 }
+
+#uv {
+    width: 10%;
+    margin-left: 45%;
+}
