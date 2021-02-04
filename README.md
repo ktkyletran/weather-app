@@ -1,7 +1,7 @@
-# weather-app
+# weather-wizard
 
 <h1>Description</h1>
-<p>A web app that retrieves the current and 5-day forecast for any city.</p>
+<p>Weather Wizard is a web app that retrieves the current and 5-day forecast for any city.</p>
 
 <h1>Tech Stack</h1>
 <ul>
