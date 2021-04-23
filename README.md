@@ -5,6 +5,7 @@
 
 <h1>Deploy Link</h1>
 The deployed link for Weather Wizard can be found below.
+<br>
 <a href="https://ktkyletran.github.io/weather-wizard/" target="_blank">Weather Wizard</a>
 
 <h1>Tech Stack</h1>
